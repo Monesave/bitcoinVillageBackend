@@ -1,0 +1,55 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    /* Emit no matter what */
+    "noEmitOnError": false,
+
+    /* Target / runtime */
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],
+    "outDir": "./dist",
+    "sourceMap": true,
+
+    /* Disable all strictness */
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": false,
+    "alwaysStrict": false,
+    "useUnknownInCatchVariables": false,
+
+    /* Disable all lint-like checks */
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": false,
+    "allowUnreachableCode": true,
+    "allowUnusedLabels": true,
+
+    /* Interop & speed */
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "forceConsistentCasingInFileNames": false,
+
+    /* JSON / paths */
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@shared/*": ["../shared/src/*"]
+    },
+
+    /* Silence JS + mixed code */
+    "allowJs": true,
+    "checkJs": false,
+
+    /* Reduce type analysis */
+    "disableSizeLimit": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+}
