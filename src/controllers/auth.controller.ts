@@ -8,11 +8,14 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
   try {
     const { email, password, username, displayName } = req.body;
 
+    const frontendUrl = (process.env.FRONTEND_URL || 'http://localhost:5173').replace(/\/+$/, '');
+
     // Sign up user with Supabase
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
+        emailRedirectTo: `${frontendUrl}/login`,
         data: {
           username: username || `user_${Date.now()}`,
           display_name: displayName || username || 'Villager',
