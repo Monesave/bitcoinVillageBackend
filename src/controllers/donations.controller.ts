@@ -81,7 +81,7 @@ export const getDonation = async (req: Request, res: Response, next: NextFunctio
 // Create a donation
 export const createDonation = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { title, wallet, amount } = req.body;
+    const { title, wallet, amount, description, images } = req.body;
 
     const accessToken = getAccessToken(req);
     if (!accessToken) {
@@ -96,6 +96,8 @@ export const createDonation = async (req: Request, res: Response, next: NextFunc
           title,
           wallet,
           amount,
+          description,
+          images: images || [],
         }
       ])
       .select()

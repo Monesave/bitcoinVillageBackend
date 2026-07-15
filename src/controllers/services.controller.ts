@@ -95,7 +95,7 @@ export const getListing = async (req: Request, res: Response, next: NextFunction
 // Create a listing
 export const createListing = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { title, price, description } = req.body;
+    const { title, price, description, images } = req.body;
     const userId = req.user?.id;
 
     const accessToken = getAccessToken(req);
@@ -112,6 +112,7 @@ export const createListing = async (req: Request, res: Response, next: NextFunct
           title,
           price,
           description,
+          images: images || [],
         }
       ])
       .select()
