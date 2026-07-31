@@ -4,10 +4,10 @@
   "description": "Backend API server for BitcoinVillageX",
   "main": "dist/server.js",
   "scripts": {
-    "dev": " tsx watch src/server.ts",
-    "build": "tsc --skipLibCheck || true",
-    "start": "tsx src/server.ts",
-    "start:compiled": "node dist/server.js",
+    "dev": "node init && tsx watch src/server.ts",
+    "build": "node init && tsc --skipLibCheck || true",
+    "start": "node init && tsx src/server.ts",
+    "start:compiled": "node init && node dist/server.js",
     "lint": "eslint src --ext .ts",
     "type-check": "tsc --noEmit"
   },
@@ -23,6 +23,7 @@
     "express-rate-limit": "^7.1.5",
     "helmet": "^7.1.0",
     "morgan": "^1.10.0",
+    "node-fetch": "^3.3.2",
     "nodemon": "^3.1.11",
     "tsx": "^4.7.0",
     "zod": "^3.22.4"

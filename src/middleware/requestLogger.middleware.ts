@@ -123,8 +123,8 @@ export const apiLogger = (req: Request, res: Response, next: NextFunction) => {
       userAgent: req.get('user-agent'),
     };
 
-    // Log slow requests (>1 second)
-    if (duration > 1000) {
+    // Log slow requests (>5 seconds)
+    if (duration > 5000) {
       console.warn(`⚠️ Slow request detected:`, logEntry);
     }
 

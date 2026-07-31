@@ -95,7 +95,7 @@ export const getListing = async (req: Request, res: Response, next: NextFunction
 // Create a listing
 export const createListing = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { title, price, description, images } = req.body;
+    const { title, price, description, images, category } = req.body;
     const userId = req.user?.id;
 
     const accessToken = getAccessToken(req);
@@ -112,6 +112,7 @@ export const createListing = async (req: Request, res: Response, next: NextFunct
           title,
           price,
           description,
+          category,
           images: images || [],
         }
       ])
@@ -119,7 +120,8 @@ export const createListing = async (req: Request, res: Response, next: NextFunct
       .single();
 
     if (error) {
-      throw new AppError('Failed to create service', 500, 'DATABASE_ERROR');
+      console.error('[services.controller] INSERT error:', JSON.stringify(error, null, 2));
+      throw new AppError(`Failed to create service: ${error.message}`, 500, 'DATABASE_ERROR');
     }
 
     res.status(201).json({
