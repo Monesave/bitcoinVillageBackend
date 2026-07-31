@@ -22,7 +22,6 @@ yarn-error.log*
 pnpm-debug.log*
 
 # IDE
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -38,3 +37,7 @@ tmp/
 temp/
 *.tmp
 
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
